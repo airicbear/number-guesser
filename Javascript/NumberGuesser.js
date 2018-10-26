@@ -67,7 +67,7 @@ const NumberGuesser = {
           console.log("Restarted the game.");
           input.readOnly = false;
           input.className = "";
-          input.restart();
+          input.updatePlaceholder(NumberGuesser.answer.max);
           setMax(NumberGuesser.answer.max);
           submit.value = "Guess";
         };
@@ -126,12 +126,9 @@ const NumberGuesser = {
     input.type = type;
     input.id = id;
     input.placeholder = promptMessage;
-    input.restart = function (placeholder = defaultMessage(max)) {
-      this.placeholder = placeholder;
-      this.value = "";
-    };
     input.updatePlaceholder = function (max = max) {
       this.placeholder = defaultMessage(max);
+      this.value = "";
     }
     return input;
   },
