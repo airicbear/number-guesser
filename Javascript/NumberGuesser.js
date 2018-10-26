@@ -1,14 +1,21 @@
 const NumberGuesser = {
   "answer": {
     number: Math.floor(Math.random() * 10) + 1,
+    setMax: function (max = this.max()) {
+      this.number = Math.floor(Math.random() * max) + 1;
+    },
+    max: 50,
   },
 
-  "main": function (target = document.body, winningMessage = "You won!", tryAgainMessage = "Try again.", winningClassName = "winningNumber", answer = this.answer.number) {
+  "main": function (target = document.body, max = this.answer.max, winningMessage = "You won!", tryAgainMessage = "Try again.", winningClassName = "winningNumber", answer = this.answer.number) {
     let container = NumberGuesser.createContainer();
     let title = NumberGuesser.createTitle();
     let form = NumberGuesser.createForm();
     let input = NumberGuesser.createInput();
     let submit = NumberGuesser.createSubmit();
+    
+    this.answer.setMax(max);
+    answer = this.answer.number;
 
     form.onsubmit = function (event) {
       event.preventDefault();
@@ -53,7 +60,7 @@ const NumberGuesser = {
     return form;
   },
 
-  "createInput": function (promptMessage = "Guess a number (1-10)", id = "NumberGuesserInput", type = "number", max = 10, min = 0, element = "input") {
+  "createInput": function (promptMessage = "Guess a number (1-" + this.answer.max + ")", id = "NumberGuesserInput", type = "number", max = this.answer.max, min = 0, element = "input") {
     let input = document.createElement(element);
     input.min = min;
     input.max = max;
