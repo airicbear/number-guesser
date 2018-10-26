@@ -3,6 +3,7 @@
 }
 
 body {
+  font-family: sans-serif;
   margin: 0;
 }
 
@@ -16,12 +17,11 @@ body {
 
 #NumberGuesserTitle {
   color: white;
-  font-family: sans-serif;
   padding: 30px 0 10px 0;
   text-align: center;
 }
 
-#NumberGuesserForm > * {
+#NumberGuesserForm input {
   border: none;
   display: block;
   font-size: 18px;
@@ -31,11 +31,32 @@ body {
   width: 90%;
 }
 
-#NumberGuesserForm > *:focus {
+#NumberGuesser *:focus {
   border: solid 2px rgb(0, 153, 255);
+}
+
+.NumberGuesserLabeledInput {
+  color: white;
+  display: inline-flex;
+  padding: 0 15px;
+}
+
+.NumberGuesserLabeledInput * {
+  font-size: 18px;
+  padding: 0 5px;
+}
+
+.NumberGuesserLabeledInput > input {
+  border: none;
+  width: 142px;
+  height: 50px;
 }
 
 .winningNumber {
   background-color: rgb(112, 233, 112);
-  border: solid 2px rgb(112, 233, 112);
+  color: rgb(52, 183, 52);
+}
+
+.winningNumber:focus {
+  border: solid 2px rgb(72, 183, 72);
 }
